@@ -1,53 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { styled } from '@mui/styles';
 import { Box, Link, Typography } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUser } from '../services/actions/user_actions';
 
 
 function NavBar() {
-    const [bgColor, setBgColor] = useState("black");
-    const [visibility, setVisibility] = useState("flex");
+    const dispatch = useDispatch();
+    const auth = useSelector(state => state[0].auth);
 
-    useEffect(() => {
-        if (window.location.pathname === "/") {
-            setBgColor("black");
-        }
-
-        window.addEventListener('scroll', updateScroll);
-    }, [window.location.pathname]);
-
-    const updateScroll = () => {
-        let scrollPosition = window.scrollY || document.documentElement.scrollTop;
-        if (window.location.pathname === "/") {
-            setBgColor("black");
-            scrollPosition < 1080 ? setBgColor("black") : setBgColor("inherit");
-        }
-    }
-    
-    const NavBox = styled(Box)({
-        position: "fixed", 
-        zIndex: 9, 
-        display: `${visibility}`, 
-        alignItems: "center",
-        width: "100vw",
-        maxWidth: "100%",
-        height: "5rem",
-    })
-    
     return (
-        <NavBox sx={{ backgroundColor: bgColor }}>
-            <Link href="/" underline="none" pl={3}>
-                <Typography variant="h6" fontWeight="700">Logo</Typography>
+        <NavBox>
+            <Link href="/" underline="none">
+                <Typography variant="h5" fontFamily="GangwonEduPowerExtraBoldA" fontWeight="700" color="#212121" sx={{ textShadow: "2px 2px #FFE1E1" }}>투두리스트</Typography>
             </Link>
 
-            <Box sx={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-                <Box sx={{ pl: "12rem" }}>
-                    <Link href="/" underline="none">
-                        <Typography variant="h6"></Typography>
-                    </Link>
-                </Box>
-            </Box>
+            {auth? (
+                <Typography color="#212121" fontWeight="700" onClick={(e) => dispatch(logoutUser())} sx={{ '&:hover': { cursor: "pointer" } }}>로그아웃</Typography>
+            ) : (
+                <Link href="/login" underline="none">
+                    <Typography color="#212121" fontWeight="700">로그인</Typography>
+                </Link>
+            )}
+            
         </NavBox>
     )
 }
 
 export default NavBar
+
+const NavBox = styled(Box)({
+    position: "fixed", 
+    zIndex: 9, 
+    alignItems: "center",
+    width: "100vw",
+    maxWidth: "100%",
+    height: "5rem",
+    padding: "3rem 4rem",
+    display: "flex",
+    justifyContent: "space-between",
+})

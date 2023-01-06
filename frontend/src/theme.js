@@ -6,6 +6,7 @@ const theme = responsiveFontSizes(createTheme({
     typography: {
         fontFamily: [
             "KoPubDotumMedium",
+            "GangwonEduPowerExtraBoldA"
         ].join(','),
         h1: {
             fontWeight: 700
@@ -25,33 +26,50 @@ const theme = responsiveFontSizes(createTheme({
             default: "#fff"
         },
         primary: {
-            light: "#FEF5ED",
-            main: "#D3E4CD",
-            dark: "#ADC2A9"
+            light: "#fffbfb",
+            main: "#FFE1E1",
+            dark: "#ffc8c8"
         },
         secondary: {
-            main: "#99A799",
-            contrastText: "#fff",
+            light: "#EEEEEE",
+            main: "#829460",
+            dark: "#90A17D"
         },
+        // primary: {
+        //     light: "#e6ee9c",
+        //     main: "#d4e157",
+        //     dark: "#cddc39"
+        // },
+        // secondary: {
+        //     light: "#ffcdd4",
+        //     main: "#FFE1E1",
+        //     dark: "#f99aaa"
+        // },
         accent: {
             main: "#000",
             contrastText: "#fff"
         },
+        error: {
+            light: "#f9d2da",
+            main: "#e96088",
+            dark: "#e30066"
+
+        },
+        success: {
+            light: "#aed581",
+            main: "#8bc34a",
+            dark: "#689f38",
+            contrastText: "#fff",
+        },
         // text: {
         //     primary: '#000000',//black
         //     secondary: '#FFFFFF',//white
-        // },
-        // error: {
-        //     main: '#D72A2A',//red
         // },
         // warning: {
         //     main: '#FC7B09',//orange
         // },
         // info: {
         //     main: '#6B7D6A',//gray
-        // },
-        // success: {
-        //     main: '#09FE00',//green
         // },
     },
     breakpoints: {
