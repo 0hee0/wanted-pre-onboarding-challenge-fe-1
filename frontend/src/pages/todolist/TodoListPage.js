@@ -187,6 +187,7 @@ function TodoListPage() {
     return (
         <div className={classes.container}>
             <ShadowBox width="100%" height="40rem" p="2rem" backgroundColor="primary.light">
+                <Box width="100%" px={1}>
                 <ShadowBox height="4rem" width="100%" px={2} backgroundColor="secondary.main" sx={{ display: "flex", alignItems: "center" }}>
                     <Stack direction="row" justifyContent="space-between" width="100%">
                         <IconButton onClick={handleCreate}>
@@ -208,6 +209,7 @@ function TodoListPage() {
                         )}
                     </Stack>
                 </ShadowBox>
+                </Box>
 
                 <Grid container spacing={2}>
                     <Grid item xs={4} height="32rem">
@@ -220,7 +222,7 @@ function TodoListPage() {
                             ) : null}
                         </Box>
                     </Grid>
-                    <Grid item xs={8} mt={2}>
+                    <Grid item xs={8} mt={2} pr={1}>
                         <ShadowBox backgroundColor="#fff" py={3} px={4} height="31rem">
                             {draft ? (
                                 <Stack spacing={2}>
@@ -288,7 +290,7 @@ const useStyles = makeStyles(theme => ({
         height: "100vh",
         minWidth: "1440px",
         width: "100vw",
-        padding: "8rem 4rem",
+        padding: "7rem 4rem",
     },
     textFieldBgColor: {
         "& .MuiFilledInput-root.Mui-focused": {
@@ -306,7 +308,7 @@ const ShadowBox = styled(Box)({
 const ShadowBoxWithHover = styled(ShadowBox, {
     shouldForwardProp: (prop) => prop !== 'todoId' && prop !== 'currentId'
 })(({ theme, todoId, currentId }) => ({
-    zIndex: 9,
+    zIndex: 1,
     '&:hover': {
         boxShadow: `${theme.palette.secondary.light} 0px 0px 8px`,
         '-webkit-box-shadow': `${theme.palette.secondary.light} 0px 0px 8px`,
