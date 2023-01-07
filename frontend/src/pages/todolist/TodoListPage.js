@@ -137,8 +137,10 @@ function TodoListPage() {
             setContent();
     
             let array = todos;
-            array.push({"id": 1, "title": "", "content": "", "createdAt": Date.now()});
+            let newTodo = {"id": 1, "title": "", "content": "", "createdAt": Date.now()}
+            array.push(newTodo);
             setTodos(array);
+            setCurrentTodo(newTodo);
         }
     }
 
