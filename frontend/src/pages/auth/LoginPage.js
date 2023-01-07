@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../../services/actions/user_actions';
+import { loginUser, loginSuccess } from '../../services/actions/user_actions';
 import { makeStyles, styled } from '@mui/styles';
 import { TextField, Container, Typography, Button, Box, Stack } from '@mui/material';
 import LoginIcon from '../../assets/icons/LoginIcon.png';
@@ -17,9 +17,14 @@ function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     
+    useEffect(() => {
+        if (window.localStorage.getItem("token")) {
+            dispatch(loginSuccess(window.localStorage.getItem("token")))
+        }
+    }, []);
 
     useEffect(() => {
-        if (success) {
+        if (email && password && success) {
             navigate("/");
         }
     }, [success]);

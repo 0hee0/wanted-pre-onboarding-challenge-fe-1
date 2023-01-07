@@ -23,7 +23,7 @@ export default function(state={}, action) {
         case LOGIN_FAILURE:
             return { ...state, success: false, error: action.payload }
         case LOGOUT_USER:
-            return { ...state, success: true, auth: false }
+            return { ...state, success: false, auth: false }
         default:
             return state;
     }

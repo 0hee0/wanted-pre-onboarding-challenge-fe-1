@@ -1,27 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/styles';
 import { Box, Link, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutUser } from '../services/actions/user_actions';
+import { logoutUser, loginSuccess } from '../services/actions/user_actions';
 
 
 function NavBar() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const auth = useSelector(state => state[0].auth);
+    const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        // console.log(auth, window.location.pathname)
+        if (!window.localStorage.getItem("token") && window.location.pathname==="/") {
+            setOpen(true); 
+        }
+        if (auth) {
+            navigate("/");
+        }
+        else {
+            if (window.localStorage.getItem("token")) {
+                dispatch(loginSuccess(window.localStorage.getItem("token")))
+            }
+        }
+    }, [auth]);
+
+    useEffect(() => {
+        if (open) {
+            setOpen(false);
+            alert("로그인 후 서비스를 이용해주시기 바랍니다.");
+            navigate("/login");   
+            return;
+        }
+    }, [open]);
 
     return (
         <NavBox>
             <Link href="/" underline="none">
-                <Typography variant="h5" fontFamily="GangwonEduPowerExtraBoldA" fontWeight="700" color="#212121" sx={{ textShadow: "2px 2px #FFE1E1" }}>투두리스트</Typography>
+                <Typography variant="h5" fontFamily="GangwonEduPowerExtraBoldA" fontWeight="700" color="accent.main" sx={{ textShadow: "2px 2px #FFE1E1" }}>투두리스트</Typography>
             </Link>
 
             {auth? (
-                <Typography color="#212121" fontWeight="700" onClick={(e) => dispatch(logoutUser())} sx={{ '&:hover': { cursor: "pointer" } }}>로그아웃</Typography>
-            ) : (
-                <Link href="/login" underline="none">
-                    <Typography color="#212121" fontWeight="700">로그인</Typography>
-                </Link>
-            )}
+                <Typography color="accent.main" fontWeight="700" onClick={(e) => dispatch(logoutUser())} sx={{ '&:hover': { cursor: "pointer" } }}>로그아웃</Typography>
+            ) : null}
             
         </NavBox>
     )

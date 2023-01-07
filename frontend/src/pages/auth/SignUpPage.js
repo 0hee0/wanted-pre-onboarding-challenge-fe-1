@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { signUpUser } from '../../services/actions/user_actions';
-import { makeStyles } from '@mui/styles';
+import { makeStyles, styled } from '@mui/styles';
 import { TextField, Container, Typography, Stack, Button, Box, InputAdornment } from '@mui/material';
 import { emailValidator, passwordValidator } from '../../utils/Validator';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
@@ -12,7 +12,7 @@ import DoneIcon from '@mui/icons-material/Done';
 
 let submitFlag = false;   // 중복 클릭 차단
 
-export default function RegisterPage() {
+export default function SignUpPage() {
     const classes = useStyles();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -200,6 +200,12 @@ export default function RegisterPage() {
                         <Typography fontWeight="700">가입 완료</Typography>
                     </Button>
                 </Box>
+                <Stack direction="row" spacing={1}>
+                    <Typography>이미 투두리스트에 가입하셨나요? </Typography>
+                    <BlackLink to="/login">
+                        <Typography color="secondary" fontWeight="600">로그인</Typography>
+                    </BlackLink>
+                </Stack>
             </Container>
         </div>
     )
@@ -214,3 +220,8 @@ const useStyles = makeStyles({
         padding: "5rem 0",
     },
 });
+
+const BlackLink = styled(Link)({
+    textDecoration: "none",
+    color: "black"
+})
