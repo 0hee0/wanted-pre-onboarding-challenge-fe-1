@@ -40,13 +40,8 @@ const theme = responsiveFontSizes(createTheme({
         //     main: "#d4e157",
         //     dark: "#cddc39"
         // },
-        // secondary: {
-        //     light: "#ffcdd4",
-        //     main: "#FFE1E1",
-        //     dark: "#f99aaa"
-        // },
         accent: {
-            main: "#000",
+            main: "#212121",
             contrastText: "#fff"
         },
         error: {
