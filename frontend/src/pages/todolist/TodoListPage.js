@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { makeStyles, styled } from '@mui/styles';
-import { Typography, Stack, Box, Grid, Button, TextField, IconButton, InputBase } from '@mui/material';
+import { Typography, Stack, Box, Grid, Button, TextField, IconButton } from '@mui/material';
 import { USER_SERVER } from '../../Config';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -14,7 +14,6 @@ import { checkFinalConsonant } from '../../utils/Format';
 function TodoListPage() {
     const classes = useStyles();
     const [todos, setTodos] = useState([]);
-    const [todo, setTodo] = useState({});
     const [draft, setDraft] = useState(false);
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
@@ -32,13 +31,6 @@ function TodoListPage() {
         }
     }, [todos])
 
-    useEffect(() => {
-        if (currentTodo?.id) {
-            // console.log('currentTodo:', currentTodo)
-            getTodoById(currentTodo.id);
-        }
-    }, [currentTodo]);
-
     const getTodos = () => {
         axios({
             method: "get",
@@ -51,25 +43,6 @@ function TodoListPage() {
             // console.log('todos:',response?.data.data);
             if (response?.data?.data) {
                 setTodos(response.data.data);
-            }
-        })
-        .catch(error => {
-            // console.log(error)
-        })
-    }
-
-    const getTodoById = (id) => {
-        axios({
-            method: "get",
-            url: `${USER_SERVER}/todos/${id}`,
-            headers: {
-                "Authorization": `Bearer ${window.localStorage.getItem('token')}`
-            }
-        })
-        .then(response => {
-            // console.log('todo by id:',response);
-            if (response?.data) {
-                setTodo(response.data.data);
             }
         })
         .catch(error => {
@@ -270,14 +243,18 @@ function TodoListPage() {
                                 </Stack>
                             ) : (
                                 <Box>
-                                    <Typography fontWeight="700" variant="h5" mb={2}>{todo.title}</Typography>
-                                    <Box height="22rem" pb={1}>
-                                        <Box sx={{ height: "100%", overflowY: "auto" }}>
-                                        <Typography sx={{ whiteSpace: 'pre-wrap' }}>{todo.content}</Typography>
+                                    {currentTodo ? (
+                                        <Box>
+                                            <Typography fontWeight="700" variant="h5" mb={2}>{currentTodo.title}</Typography>
+                                            <Box height="22rem" pb={1}>
+                                                <Box sx={{ height: "100%", overflowY: "auto" }}>
+                                                <Typography sx={{ whiteSpace: 'pre-wrap' }}>{currentTodo.content}</Typography>
+                                                </Box>
+                                            </Box>
+                                            <Typography color="gray" textAlign="end">생성일: {moment(currentTodo.createdAt).format('YYYY년 MM월 DD일 HH시 mm분')}</Typography>
+                                            <Typography color="gray" textAlign="end">수정일: {moment(currentTodo.updatedAt).format('YYYY년 MM월 DD일 HH시 mm분')}</Typography>
                                         </Box>
-                                    </Box>
-                                    <Typography color="gray" textAlign="end">생성일: {moment(todo.createdAt).format('YYYY년 MM월 DD일 HH시 mm분')}</Typography>
-                                    <Typography color="gray" textAlign="end">수정일: {moment(todo.updatedAt).format('YYYY년 MM월 DD일 HH시 mm분')}</Typography>
+                                    ) : null}
                                 </Box>
                             )}
                         </ShadowBox>
