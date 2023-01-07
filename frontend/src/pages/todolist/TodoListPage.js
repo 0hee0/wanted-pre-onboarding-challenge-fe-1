@@ -34,7 +34,7 @@ function TodoListPage() {
 
     useEffect(() => {
         if (currentTodo?.id) {
-            console.log('currentTodo:', currentTodo)
+            // console.log('currentTodo:', currentTodo)
             getTodoById(currentTodo.id);
         }
     }, [currentTodo]);
@@ -48,13 +48,13 @@ function TodoListPage() {
             }
         })
         .then(response => {
-            console.log('todos:',response?.data.data);
+            // console.log('todos:',response?.data.data);
             if (response?.data?.data) {
                 setTodos(response.data.data);
             }
         })
         .catch(error => {
-            console.log(error)
+            // console.log(error)
         })
     }
 
@@ -67,7 +67,7 @@ function TodoListPage() {
             }
         })
         .then(response => {
-            console.log('todo by id:',response);
+            // console.log('todo by id:',response);
             if (response?.data) {
                 setTodo(response.data.data);
             }
@@ -99,19 +99,18 @@ function TodoListPage() {
             }
         })
         .then(response => {
-            console.log(response);
+            // console.log(response);
             if (response?.data) {
                 setCurrentTodo(response.data?.data);
                 handleDraft();
             }
         })
         .catch(error => {
-            console.log(error)
+            // console.log(error)
         })
     }
 
     const updateTodo = (event) => {
-        console.log(window.localStorage.getItem('token'))
         axios({
             method: "put",
             url: `${USER_SERVER}/todos/${currentTodo?.id}`,
@@ -124,13 +123,13 @@ function TodoListPage() {
             }
         })
         .then(response => {
-            console.log(response);
+            // console.log(response);
             setCurrentTodo(response.data.data);
             getTodos();
             handleDraft();
         })
         .catch(error => {
-            console.log(error)
+            // console.log(error)
         })
     }
 
@@ -143,13 +142,13 @@ function TodoListPage() {
             }
         })
         .then(response => {
-            console.log(response);
+            // console.log(response);
             handleDelete();
             setCurrentTodo(undefined);
             getTodos();
         })
         .catch(error => {
-            console.log(error)
+            // console.log(error)
         })
     }
 
@@ -237,7 +236,7 @@ function TodoListPage() {
 
                 <Grid container spacing={2}>
                     <Grid item xs={4} height="32rem">
-                        <Box sx={{ height: "100%", overflowY: "scroll", mt: 2 }}>
+                        <Box sx={{ height: "100%", overflowY: "auto", mt: 2 }}>
                             {todos?.length ? todos.slice(0).reverse().map(todo =>
                                 <ShadowBoxWithHover key={todo.id} todoId={todo.id} currentId={currentTodo?.id} onClick={handleTodo(todo)} backgroundColor="#fff" mb={2} mx={1} py={2} px={3}>
                                     <Typography fontWeight="700" variant="h6" gutterBottom>{todo.title}</Typography>
@@ -273,7 +272,7 @@ function TodoListPage() {
                                 <Box>
                                     <Typography fontWeight="700" variant="h5" mb={2}>{todo.title}</Typography>
                                     <Box height="22rem" pb={1}>
-                                        <Box sx={{ height: "100%", overflowY: "scroll" }}>
+                                        <Box sx={{ height: "100%", overflowY: "auto" }}>
                                         <Typography sx={{ whiteSpace: 'pre-wrap' }}>{todo.content}</Typography>
                                         </Box>
                                     </Box>
