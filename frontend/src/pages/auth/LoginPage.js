@@ -13,7 +13,7 @@ function LoginPage() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const errorMessage = useSelector(state => state[0].error);
-    const success = useSelector(state => state[0].success);
+    const success = useSelector(state => state[0].successLogin);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     

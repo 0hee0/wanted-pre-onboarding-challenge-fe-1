@@ -18,7 +18,7 @@ export default function SignUpPage() {
     const dispatch = useDispatch();
     const errorMessage = useSelector(state => state[0].error);
     const alertMessage = useSelector(state => state[0].alert);
-    const success = useSelector(state => state[0].success);
+    const success = useSelector(state => state[0].successSignUp);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");

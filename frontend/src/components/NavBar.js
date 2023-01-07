@@ -10,6 +10,7 @@ function NavBar() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const auth = useSelector(state => state[0].auth);
+    const success = useSelector(state => state[0].successLogout);
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
@@ -30,11 +31,17 @@ function NavBar() {
     useEffect(() => {
         if (open) {
             setOpen(false);
-            alert("로그인 후 서비스를 이용해주시기 바랍니다.");
+            // alert("로그인 후 서비스를 이용해주시기 바랍니다.");
             navigate("/login");   
             return;
         }
     }, [open]);
+
+    useEffect(() => {
+        if (success) {
+            alert("로그인 후 서비스를 이용해주시기 바랍니다.");
+        }
+    }, [success]);
 
     return (
         <NavBox>
