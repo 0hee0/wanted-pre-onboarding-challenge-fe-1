@@ -44,20 +44,21 @@ function LoginPage() {
             <Container maxWidth="sm" sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <img src={LoginIcon} height="280px" />
                 {errorMessage ? (
-                    <Stack backgroundColor="error.light" direction="row" spacing={1} height="3.5rem" width="100%" alignItems="center" p={2} my={1} sx={{ borderRadius: "4px" }}>
+                    <Stack backgroundColor="error.light" direction="row" spacing={1} height="3.5rem" width="100%" alignItems="center" p={2} m1={1} mt={1} mb={2} sx={{ borderRadius: "4px" }}>
                         <WarningAmberIcon color="error" />
                         <Typography fontSize="12px">
                             {errorMessage}
                         </Typography>
                     </Stack>
-                ) : <Box height="3.5rem" my={1} />}
+                ) : <Box height="3.5rem" mt={1} mb={2} />}
                 <TextField
                     required
                     id="email-input"
                     label="이메일"
                     autoComplete="current-email"
                     fullWidth
-                    margin="normal"
+                    margin="small"
+                    sx={{ marginBottom: "1rem" }}
                     onChange={(e) => setEmail(e.target.value)}
                     onKeyDown={enterKey}
                 />
@@ -68,11 +69,12 @@ function LoginPage() {
                     type="password"
                     autoComplete="current-password"
                     fullWidth
-                    margin="normal"
+                    margin="small"
+                    sx={{ marginBottom: "1rem" }}
                     onChange={(e) => setPassword(e.target.value)}
                     onKeyDown={enterKey}
                 />
-                <Box my={4} width="100%">
+                <Box my={2} width="100%">
                     <Button onClick={handleSubmit} fullWidth size="large" color="primary" variant="contained" sx={{ height: "3.5rem" }}>
                         <Typography fontWeight="700">로그인</Typography>
                     </Button>
@@ -94,7 +96,7 @@ const useStyles = makeStyles({
         height: "100vh",
         minWidth: "1440px",
         width: "100vw",
-        padding: "10rem 0",
+        padding: "5rem 0",
     },
 })
 

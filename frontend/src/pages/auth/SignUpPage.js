@@ -28,7 +28,7 @@ export default function RegisterPage() {
     const [passwordConfirmValid, setPasswordConfirmValid] = useState(false);
 
     useEffect(() => {
-        window.scrollTo({top: 1})
+        window.scrollTo({top: 1});
     }, []);
 
     useEffect(() => {
@@ -106,7 +106,7 @@ export default function RegisterPage() {
             <Container maxWidth="sm" sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <img src={SignUpIcon} height="280px" />
                 {errorMessage || (email && !emailValid) || (password && !passwordValid) || (confirmPassword && !passwordConfirmValid) ? (
-                    <Stack backgroundColor="error.light" direction="row" spacing={1} height="3.5rem" width="100%" alignItems="center" p={2} my={1} sx={{ borderRadius: "4px" }}>
+                    <Stack backgroundColor="error.light" direction="row" spacing={1} height="3.5rem" width="100%" alignItems="center" p={2} m1={1} mb={2} sx={{ borderRadius: "4px" }}>
                         <WarningAmberIcon color="error" />
                         <Typography fontSize="12px">
                             {errorMessage ? (
@@ -126,14 +126,15 @@ export default function RegisterPage() {
                             )}
                         </Typography>
                     </Stack>
-                ) : <Box height="3.5rem" my={1} />}
+                ) : <Box height="3.5rem" m1={1} mb={2} />}
                 
                 <TextField
                     id="email-input"
                     placeholder="이메일"
                     value={email}
                     fullWidth
-                    margin="normal"
+                    margin="small"
+                    sx={{ marginBottom: "1rem" }}
                     onChange={(e) => setEmail(e.target.value)}
                     color={emailValid ? "success" : null}
                     focused={emailValid}
@@ -155,7 +156,8 @@ export default function RegisterPage() {
                     type="password"
                     autoComplete="current-password"
                     fullWidth
-                    margin="normal"
+                    margin="small"
+                    sx={{ marginBottom: "1rem" }}
                     onChange={handlePassword}
                     color={passwordValid ? "success" : null}
                     focused={passwordValid}
@@ -177,7 +179,8 @@ export default function RegisterPage() {
                     type="password"
                     autoComplete="current-confirm-password"
                     fullWidth
-                    margin="normal"
+                    margin="small"
+                    sx={{ marginBottom: "1rem" }}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     color={passwordConfirmValid ? "success" : null}
                     focused={passwordConfirmValid}
@@ -192,7 +195,7 @@ export default function RegisterPage() {
                     }
                     onKeyDown={enterKey}
                 />
-                <Box mt={4} width="100%">
+                <Box my={2} width="100%">
                     <Button disabled={!emailValid || !passwordValid || !passwordConfirmValid} onClick={handleSubmit} variant="contained" fullWidth sx={{ height: "3.5rem" }}>
                         <Typography fontWeight="700">가입 완료</Typography>
                     </Button>
@@ -208,6 +211,6 @@ const useStyles = makeStyles({
         height: "100vh",
         minWidth: "1440px",
         width: "100vw",
-        padding: "10rem 0",
+        padding: "5rem 0",
     },
 });
