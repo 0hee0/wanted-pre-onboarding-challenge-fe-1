@@ -60,6 +60,11 @@ function TodoListPage() {
     }
 
     const createTodo = (event) => {
+        if (!title) {
+            alert("제목을 입력하셔야 합니다.");
+            return;
+        }
+
         axios({
             method: "post",
             url: `${USER_SERVER}/todos`,
@@ -84,6 +89,11 @@ function TodoListPage() {
     }
 
     const updateTodo = (event) => {
+        if (!title) {
+            alert("제목을 입력하셔야 합니다.");
+            return;
+        }
+
         axios({
             method: "put",
             url: `${USER_SERVER}/todos/${currentTodo?.id}`,
@@ -188,27 +198,27 @@ function TodoListPage() {
         <div className={classes.container}>
             <ShadowBox width="100%" height="40rem" p="2rem" backgroundColor="primary.light">
                 <Box width="100%" px={1}>
-                <ShadowBox height="4rem" width="100%" px={2} backgroundColor="secondary.main" sx={{ display: "flex", alignItems: "center" }}>
-                    <Stack direction="row" justifyContent="space-between" width="100%">
-                        <IconButton onClick={handleCreate}>
-                            <AddCircleOutlineIcon sx={{ fontSize: "2rem" }} />
-                        </IconButton>
-                        {draft ? (
-                            <Button onClick={saveTodo}>
-                                <Typography fontWeight="700">저장하기</Typography>
-                            </Button>
-                        ) : (
-                            <Stack direction="row" spacing={1}>
-                                <Button onClick={handleUpdate}>
-                                    <Typography fontWeight="700">수정하기</Typography>
+                    <ShadowBox height="4rem" width="100%" px={2} backgroundColor="secondary.main" sx={{ display: "flex", alignItems: "center" }}>
+                        <Stack direction="row" justifyContent="space-between" width="100%">
+                            <IconButton onClick={handleCreate}>
+                                <AddCircleOutlineIcon sx={{ fontSize: "2rem" }} />
+                            </IconButton>
+                            {draft ? (
+                                <Button onClick={saveTodo}>
+                                    <Typography fontWeight="700">저장하기</Typography>
                                 </Button>
-                                <IconButton onClick={handleDelete}>
-                                    <DeleteIcon sx={{ color: "primary.main", fontSize: "2rem" }} />
-                                </IconButton>
-                            </Stack>
-                        )}
-                    </Stack>
-                </ShadowBox>
+                            ) : (
+                                <Stack direction="row" spacing={1}>
+                                    <Button onClick={handleUpdate}>
+                                        <Typography fontWeight="700">수정하기</Typography>
+                                    </Button>
+                                    <IconButton onClick={handleDelete}>
+                                        <DeleteIcon sx={{ color: "primary.main", fontSize: "2rem" }} />
+                                    </IconButton>
+                                </Stack>
+                            )}
+                        </Stack>
+                    </ShadowBox>
                 </Box>
 
                 <Grid container spacing={2}>
