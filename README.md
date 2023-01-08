@@ -1,7 +1,7 @@
 # wanted-pre-onboarding-challenge-fe-1
 원티드 프리온보딩 챌린지 프론트엔드 코스 사전과제로 만든 투두리스트입니다.
 
-<img width="1552" alt="스크린샷 2023-01-07 오후 10 39 54" src="https://user-images.githubusercontent.com/53266682/211153826-602b3ae6-68d2-40e7-8222-fed4df20fc83.png">
+<img width="1552" alt="wanted-challenge-screenshot" src="https://user-images.githubusercontent.com/53266682/211199052-161ffaa3-6f6e-4296-a6d2-798755c36f8e.png">
 
 ## Table of Content
 
@@ -22,23 +22,24 @@ https://user-images.githubusercontent.com/53266682/211158989-208be16d-adcd-48fb-
 
 #### Read Todos
 
-https://user-images.githubusercontent.com/53266682/211158398-6cc70378-9e3a-4488-b3c7-0e4152034f72.mov
+https://user-images.githubusercontent.com/53266682/211198923-8e8ba02f-d4f0-493d-9cd0-ccb6a85c86b0.mov
 
 #### Create Todo
 
-https://user-images.githubusercontent.com/53266682/211158581-48b4e92f-05e0-4789-a6fe-ecbeee751b79.mov
+https://user-images.githubusercontent.com/53266682/211198932-8a02c28f-8d2f-4efb-8038-821f2b090837.mov
 
 #### Update Todo
 
-https://user-images.githubusercontent.com/53266682/211159198-44d9024e-31f1-44ea-b0e6-42a8c40a7455.mov
+https://user-images.githubusercontent.com/53266682/211198939-15d8d39c-7ddb-4efa-ace8-eb9d7bd87b76.mov
 
 #### Delete Todo
 
-https://user-images.githubusercontent.com/53266682/211159202-b13c97c6-9083-464f-8b2f-31f193d98756.mov
+https://user-images.githubusercontent.com/53266682/211198944-2b54f922-3a1d-44b0-b792-7ea9d7864f1e.mov
 
 ### Logout
 
-https://user-images.githubusercontent.com/53266682/211159420-873b37fe-338d-4e2c-bda9-b80015bbb728.mov
+https://user-images.githubusercontent.com/53266682/211198945-dce8c7a0-26fe-4e07-9b94-fbd871b34aa2.mov
+
 
 ## Getting Started
 
