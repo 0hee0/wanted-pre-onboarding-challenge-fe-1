@@ -1,5 +1,5 @@
 # wanted-pre-onboarding-challenge-fe-1
-원티드 프리온보딩 챌린지 프론트엔드 코스 사전과제로 만든 투두리스트입니다.
+원티드 프리온보딩 챌린지 프론트엔드 코스 사전과제로 만든 ~투두리스트~메모장입니다.
 
 <img width="1552" alt="wanted-challenge-screenshot" src="https://user-images.githubusercontent.com/53266682/211199052-161ffaa3-6f6e-4296-a6d2-798755c36f8e.png">
 
